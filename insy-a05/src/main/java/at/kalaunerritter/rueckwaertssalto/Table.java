@@ -1,6 +1,6 @@
 package at.kalaunerritter.rueckwaertssalto;
 
-import at.kalaunerritter.attributes.BaseAttribute;
+import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -50,21 +50,5 @@ public class Table {
 
     public List<BaseAttribute> getAttributes() {
         return attributes;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Table table = (Table) o;
-
-        return !(tablename != null ? !tablename.equals(table.tablename) : table.tablename != null);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return tablename != null ? tablename.hashCode() : 0;
     }
 }

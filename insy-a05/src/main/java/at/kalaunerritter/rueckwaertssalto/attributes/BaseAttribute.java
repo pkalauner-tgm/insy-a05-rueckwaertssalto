@@ -1,4 +1,4 @@
-package at.kalaunerritter.attributes;
+package at.kalaunerritter.rueckwaertssalto.attributes;
 
 /**
  * Diese Klasse beinhaelt alle Eigenschaften eines Datenbank-Attributes als HTML Tags:
@@ -55,5 +55,10 @@ public abstract class BaseAttribute {
 
     public String getEndTags() {
         return endTags;
+    }
+
+    @Override
+    public String toString() {
+        return getValue();
     }
 }

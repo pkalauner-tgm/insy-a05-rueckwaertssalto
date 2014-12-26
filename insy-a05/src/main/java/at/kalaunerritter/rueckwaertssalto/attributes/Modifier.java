@@ -1,4 +1,4 @@
-package at.kalaunerritter.attributes;
+package at.kalaunerritter.rueckwaertssalto.attributes;
 
 /**
  * Ein Modifier ist ein Decorator fuer ein Datenbank-Attribut.

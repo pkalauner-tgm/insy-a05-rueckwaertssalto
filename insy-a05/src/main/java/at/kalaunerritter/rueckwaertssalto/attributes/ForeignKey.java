@@ -1,4 +1,4 @@
-package at.kalaunerritter.attributes;
+package at.kalaunerritter.rueckwaertssalto.attributes;
 
 /**
  * Der Foreign-Key ist ein Decorator, welcher ein Datenbank-Attribut zum Foreign-Key macht.

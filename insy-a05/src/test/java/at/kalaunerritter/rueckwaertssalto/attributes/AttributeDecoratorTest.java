@@ -1,4 +1,4 @@
-package at.kalaunerritter.attributes;
+package at.kalaunerritter.rueckwaertssalto.attributes;
 
 import org.junit.Test;
 

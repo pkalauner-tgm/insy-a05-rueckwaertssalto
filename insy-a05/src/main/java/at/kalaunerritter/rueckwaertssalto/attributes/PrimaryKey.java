@@ -1,4 +1,4 @@
-package at.kalaunerritter.attributes;
+package at.kalaunerritter.rueckwaertssalto.attributes;
 
 /**
  * Der Primary-Key ist ein Decorator, welcher ein Datenbank-Attribut zum Primary-Key macht.

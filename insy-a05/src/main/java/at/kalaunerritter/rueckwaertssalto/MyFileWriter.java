@@ -1,6 +1,6 @@
 package at.kalaunerritter.rueckwaertssalto;
 
-import at.kalaunerritter.attributes.BaseAttribute;
+import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,7 +24,6 @@ public class MyFileWriter {
      * Writes the RM to the file
      *
      * @param tables the collection with the tables
-     * @throws IOException on failure
      */
     public static void writeRmToFile(Collection<Table> tables) {
         PrintWriter writer;

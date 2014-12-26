@@ -1,4 +1,4 @@
-package at.kalaunerritter.attributes;
+package at.kalaunerritter.rueckwaertssalto.attributes;
 
 /**
  * Dieses Attribut stellt ein Standardattribut dar, welches nur einen Namen bzw. einen Wert besitzt,

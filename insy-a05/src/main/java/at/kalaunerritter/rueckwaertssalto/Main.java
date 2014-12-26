@@ -1,7 +1,7 @@
 package at.kalaunerritter.rueckwaertssalto;
 
-import at.kalaunerritter.connection.DBConnectionCreator;
-import at.kalaunerritter.connection.MySQLConnectionCreator;
+import at.kalaunerritter.rueckwaertssalto.connection.DBConnectionCreator;
+import at.kalaunerritter.rueckwaertssalto.connection.MySQLConnectionCreator;
 import org.apache.commons.cli.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

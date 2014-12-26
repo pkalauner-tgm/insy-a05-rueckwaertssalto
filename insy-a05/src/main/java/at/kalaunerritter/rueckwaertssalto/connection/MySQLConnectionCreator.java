@@ -1,4 +1,4 @@
-package at.kalaunerritter.connection;
+package at.kalaunerritter.rueckwaertssalto.connection;
 
 
 import org.apache.logging.log4j.LogManager;

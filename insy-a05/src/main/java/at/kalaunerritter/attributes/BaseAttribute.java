@@ -1,7 +1,11 @@
 package at.kalaunerritter.attributes;
 
 /**
- * Created by Mathias on 26.12.14.
+ * Diese Klasse beinhaelt alle Eigenschaften eines Datenbank-Attributes als HTML Tags:
+ * Ein Decorator fuegt die HTML Tags zum Namen bzw. zur Value des Datenbank-Attributes hinzu.
+ *
+ * @author Mathias Ritter 4AHIT
+ * @version 20141226.1
  */
 public abstract class BaseAttribute {
 
@@ -23,6 +27,13 @@ public abstract class BaseAttribute {
         this.value = value;
     }
 
+
+    /**
+     * Zusammenbauen des HTML-Strings:
+     * Diese besteht aus den Anfang-Tags, dem Namen/Value des Datenbank-Attributes und den End-Tags
+     *
+     * @return HTML-Darstellung des Datenbank-Attributes
+     */
     public String getHTMLValue() {
         return beginTags + value + endTags;
     }

@@ -1,7 +1,11 @@
 package at.kalaunerritter.attributes;
 
 /**
- * Created by Mathias on 26.12.14.
+ * Der Foreign-Key ist ein Decorator, welcher ein Datenbank-Attribut zum Foreign-Key macht.
+ * Dabei werden die notwendigen HTML-Tags hinzugefuegt
+ *
+ * @author Mathias Ritter 4AHIT
+ * @version 20141226.1
  */
 public class ForeignKey extends Modifier {
 
@@ -12,9 +16,11 @@ public class ForeignKey extends Modifier {
         this.foreignAttribute = foreignAttribute;
         this.foreignTable = foreignTable;
 
+        //HTML-Tags hinzufuegen
         this.setBeginTags("<i>" + super.getWrapper().getBeginTags());
         this.setEndTags(super.getWrapper().getEndTags() + "</i>");
 
+        //Die Value wird geandert, entweder auf attr4: RelY.attrZ oder nur auf RelY.attrZ bei gleichnamigen Attributen
         if (super.getWrapper().getValue().contains(foreignAttribute))
             this.setValue(foreignTable + "." + super.getWrapper().getValue());
         else

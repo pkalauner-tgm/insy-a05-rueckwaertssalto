@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class TestAppender extends AppenderSkeleton {
 
-    private final List<LoggingEvent> log = new ArrayList<LoggingEvent>();
+    private final List<LoggingEvent> log = new ArrayList<>();
 
     @Override
     public boolean requiresLayout() {
@@ -32,6 +32,6 @@ public class TestAppender extends AppenderSkeleton {
     }
  
     public List<LoggingEvent> getLog() {
-        return new ArrayList<LoggingEvent>(log);
+        return new ArrayList<>(log);
     }
 }

@@ -1,32 +1,23 @@
 package at.kalaunerritter.rueckwaertssalto.connection;
 
 
-import at.kalaunerritter.rueckwaertssalto.TestAppender;
 import at.kalaunerritter.rueckwaertssalto.Main;
-import org.apache.log4j.LogManager;
+import at.kalaunerritter.rueckwaertssalto.TestAppender;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.Assertion;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import java.sql.SQLException;
 
 import static org.junit.Assert.assertTrue;
 
-/**
- * Testen des MySQLConnectionCreators.
- *
- * @author Mathias Ritter 4AHIT
- * @version 20141226.1
- */
 public class MySQLConnectionCreatorTest {
 
 
     private TestAppender testAppender;
-
-    private static final Logger LOG = LogManager.getLogger(MySQLConnectionCreatorTest.class);
-
 
     @Rule
     public final ExpectedSystemExit exit = ExpectedSystemExit.none();
@@ -40,17 +31,16 @@ public class MySQLConnectionCreatorTest {
         Logger.getRootLogger().addAppender(testAppender);
     }
 
-    /**
-     * Testen des Verbindungsaufbaus
-     */
     @Test
-    public void testCreateConnection() {
-        String[] args = { "-d", "Datenbank", "-u", "user", "-p", "12345", "-h", "127.0.0.1"};
+    public void testCreateConnection() throws SQLException {
+        String[] args = { "-d", "Datenbank", "-T", "Tabelle", "-f", "*", "-u", "user", "-p", "12345", "-h", "127.0.0.1"};
 
         Main.parseArgs(args);
         exit.expectSystemExit();
-        exit.checkAssertionAfterwards(() -> {
-            assertTrue(testAppender.getLog().size() >= 1);
+        exit.checkAssertionAfterwards(new Assertion() {
+            public void checkAssertion() {
+                assertTrue(testAppender.getLog().size() >= 1);
+            }
         });
 
 

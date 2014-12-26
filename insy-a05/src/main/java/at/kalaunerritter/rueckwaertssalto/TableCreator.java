@@ -1,6 +1,5 @@
-package at.kalaunerritter;
+package at.kalaunerritter.rueckwaertssalto;
 
-import at.kalaunerritter.rueckwaertssalto.AttributeLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,6 +23,11 @@ public class TableCreator {
 
     private List<Table> tables;
 
+    /**
+     * Initializes the TableCreator with the given Connection
+     *
+     * @param con Connection
+     */
     public TableCreator(Connection con) {
         this.tables = new ArrayList<>();
         this.con = con;
@@ -34,6 +38,9 @@ public class TableCreator {
         }
     }
 
+    /**
+     * gets all Tables and their attributes of the DB
+     */
     public void loadTables() {
         try {
             // Get all tables

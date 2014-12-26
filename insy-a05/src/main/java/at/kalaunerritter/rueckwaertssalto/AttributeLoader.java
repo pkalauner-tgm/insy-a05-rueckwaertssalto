@@ -28,6 +28,13 @@ public class AttributeLoader {
     }
 
 
+    /**
+     * Loads all attributes of the given table
+     *
+     * @param con       the connection with a specific database
+     * @param tablename the name of the table
+     * @return Collection with the attributes of the given table
+     */
     public static Collection<BaseAttribute> loadAttributes(Connection con, String tablename) {
         try {
             DatabaseMetaData dbmd = con.getMetaData();

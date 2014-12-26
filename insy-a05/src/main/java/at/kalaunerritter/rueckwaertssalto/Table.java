@@ -1,4 +1,4 @@
-package at.kalaunerritter;
+package at.kalaunerritter.rueckwaertssalto;
 
 import at.kalaunerritter.attributes.BaseAttribute;
 
@@ -16,15 +16,30 @@ public class Table {
     private String tablename;
     private List<BaseAttribute> attributes;
 
+    /**
+     * Initializes the table with the given name
+     *
+     * @param tablename name of the table
+     */
     public Table(String tablename) {
         this.attributes = new ArrayList<>();
         this.tablename = tablename;
     }
 
+    /**
+     * Adds a new attribute to the table
+     *
+     * @param attribute attribute to add
+     */
     public void addAttribute(BaseAttribute attribute) {
         this.attributes.add(attribute);
     }
 
+    /**
+     * adds multiple attributes to the table
+     *
+     * @param attrs collection with the arguments to add
+     */
     public void addAttributes(Collection<BaseAttribute> attrs) {
         this.attributes.addAll(attrs);
     }

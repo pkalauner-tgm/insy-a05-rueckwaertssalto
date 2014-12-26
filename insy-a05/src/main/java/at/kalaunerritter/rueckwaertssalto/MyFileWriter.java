@@ -1,4 +1,4 @@
-package at.kalaunerritter;
+package at.kalaunerritter.rueckwaertssalto;
 
 import at.kalaunerritter.attributes.BaseAttribute;
 import org.apache.logging.log4j.LogManager;
@@ -11,13 +11,22 @@ import java.io.PrintWriter;
 import java.util.Collection;
 
 /**
- * Created by Paul on 26.12.14.
+ * Writes to a file
+ *
+ * @author Paul Kalauner 4AHIT
+ * @version 20141226.1
  */
 public class MyFileWriter {
     private static final Logger LOG = LogManager.getLogger(MyFileWriter.class);
     private static final String RM_FILENAME = "rm.html";
 
-    public static void writeRmToFile(Collection<Table> tables) throws IOException {
+    /**
+     * Writes the RM to the file
+     *
+     * @param tables the collection with the tables
+     * @throws IOException on failure
+     */
+    public static void writeRmToFile(Collection<Table> tables) {
         PrintWriter writer;
         File f = new File(RM_FILENAME);
         // if file exists already, delete it
@@ -25,7 +34,13 @@ public class MyFileWriter {
             //noinspection ResultOfMethodCallIgnored
             f.delete();
         }
-        writer = new PrintWriter(new FileWriter(f));
+        try {
+            writer = new PrintWriter(new FileWriter(f));
+        } catch (IOException e) {
+            LOG.error("Could not open file", e);
+            return;
+        }
+
         LOG.info("Writing to " + f.getAbsolutePath());
 
 
@@ -36,6 +51,13 @@ public class MyFileWriter {
         writer.flush();
     }
 
+    /**
+     * Converts the content of a Collection to a String. <br>
+     * (We could also use the {@code toString()} method, but we do not want the [])
+     *
+     * @param col Collection with BaseAttributes
+     * @return String with the content of the given Collection
+     */
     private static String collectionToString(Collection<BaseAttribute> col) {
         StringBuilder sb = new StringBuilder();
         for (BaseAttribute cur : col)

@@ -13,7 +13,7 @@ public class Attribute extends BaseAttribute {
     /**
      * Der Superkonstruktor wird aufgerufen und der Name/Wert des Attributs wird gesetzt.
      *
-     * @param value
+     * @param value value des Attributs
      */
     public Attribute(String value) {
         super();

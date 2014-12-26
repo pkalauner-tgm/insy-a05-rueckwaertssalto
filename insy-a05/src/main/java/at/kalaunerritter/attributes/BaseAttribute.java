@@ -14,9 +14,9 @@ public abstract class BaseAttribute {
     private String endTags;
 
     public BaseAttribute() {
-        this.value="";
-        this.endTags="";
-        this.beginTags="";
+        this.value = "";
+        this.endTags = "";
+        this.beginTags = "";
     }
 
     public String getValue() {

@@ -9,12 +9,9 @@ package at.kalaunerritter.attributes;
  */
 public class ForeignKey extends Modifier {
 
-    private String foreignTable, foreignAttribute;
 
     public ForeignKey(String foreignTable, String foreignAttribute, BaseAttribute wrapper) {
         super(wrapper);
-        this.foreignAttribute = foreignAttribute;
-        this.foreignTable = foreignTable;
 
         //HTML-Tags hinzufuegen
         this.setBeginTags("<i>" + super.getWrapper().getBeginTags());

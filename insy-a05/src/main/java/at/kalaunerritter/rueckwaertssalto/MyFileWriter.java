@@ -40,7 +40,7 @@ public class MyFileWriter {
             return;
         }
 
-        LOG.info("Writing to " + f.getAbsolutePath());
+        LOG.info("Writing RM to " + f.getAbsolutePath());
 
 
         for (Table cur : tables) {

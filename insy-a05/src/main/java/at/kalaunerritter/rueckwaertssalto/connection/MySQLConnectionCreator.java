@@ -37,11 +37,11 @@ public class MySQLConnectionCreator extends DBConnectionCreator {
      * @see DBConnectionCreator#createConnection()
      */
     public Connection createConnection() {
-
         Connection out = null;
 
         //Connection-String speziell fuer MySQL
         String connectionString = "jdbc:mysql://" + super.getHost() + "/" + super.getDatabase();
+        logger.info("Creating MySQLConnection: " + connectionString);
         try {
             //Neue Connection mittels Driver-Manager initialisieren
             out = DriverManager.getConnection(connectionString, super.getUser(), super.getPassword());

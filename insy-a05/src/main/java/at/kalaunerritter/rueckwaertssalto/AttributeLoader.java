@@ -36,6 +36,7 @@ public class AttributeLoader {
      * @return Collection with the attributes of the given table
      */
     public static Collection<BaseAttribute> loadAttributes(Connection con, String tablename) {
+        LOG.debug("Getting attributes for table " + tablename);
         try {
             DatabaseMetaData dbmd = con.getMetaData();
             Map<String, BaseAttribute> map = new HashMap<>();

@@ -8,13 +8,18 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.contrib.java.lang.system.Assertion;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import java.sql.SQLException;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Testen des MySQLConnectionCreators.
+ *
+ * @author Mathias Ritter 4AHIT
+ * @version 20141226.1
+ */
 public class MySQLConnectionCreatorTest {
 
 
@@ -35,8 +40,11 @@ public class MySQLConnectionCreatorTest {
         Logger.getRootLogger().addAppender(testAppender);
     }
 
+    /**
+     * Testen des Verbindungsaufbaus
+     */
     @Test
-    public void testCreateConnection() throws SQLException {
+    public void testCreateConnection() {
         String[] args = { "-d", "Datenbank", "-u", "user", "-p", "12345", "-h", "127.0.0.1"};
 
         Main.parseArgs(args);

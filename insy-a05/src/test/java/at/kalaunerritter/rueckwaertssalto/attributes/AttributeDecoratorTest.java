@@ -4,6 +4,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Testen des Decorators fuer die Datenbank-Attribute
+ *
+ * @author Mathias Ritter 4AHIT
+ * @version 20141226.1
+ */
 public class AttributeDecoratorTest {
 
     /**

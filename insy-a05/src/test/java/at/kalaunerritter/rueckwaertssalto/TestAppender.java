@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * Wird verwendet, um die Ausgabe von Log4J zu testen
  *
- * @author Mathias Ritter
- * @version 1.0
+ * @author Mathias Ritter 4AHIT
+ * @version 20141226.1
  */
 public class TestAppender extends AppenderSkeleton {
 

@@ -1,6 +1,5 @@
 package at.kalaunerritter.connection;
 
-
 import java.sql.Connection;
 
 /**

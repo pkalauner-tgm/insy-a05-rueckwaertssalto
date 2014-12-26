@@ -36,7 +36,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>at.kalaunerhollander.rueckwaertssalto.Main</mainClass>
+                            <mainClass>at.kalaunerritter.rueckwaertssalto.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

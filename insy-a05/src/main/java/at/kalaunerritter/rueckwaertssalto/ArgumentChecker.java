@@ -1,4 +1,4 @@
-package at.kalaunerhollander.rueckwaertssalto;
+package at.kalaunerritter.rueckwaertssalto;
 
 import org.apache.commons.cli.*;
 

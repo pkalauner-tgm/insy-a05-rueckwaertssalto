@@ -7,7 +7,7 @@ import java.sql.Connection;
  * Beinhaelt alle erforderlichen Daten, die zum Verbindungsaufbau erforderlich sind.
  *
  * @author Ritter Mathias
- * @version 1.0
+ * @version 20141226.1
  */
 public abstract class DBConnectionCreator {
 

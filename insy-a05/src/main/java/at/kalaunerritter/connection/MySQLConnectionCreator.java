@@ -11,7 +11,8 @@ import java.sql.SQLException;
 /**
  * Diese Klasse erweitert den DBConnectionCreator und implementiert die Fabrikmethode zum Erstellen einer Connection
  *
- * @author Ritter Mathias
+ * @author Ritter Mathias 4AHIT
+ * @version 20141226.1
  */
 public class MySQLConnectionCreator extends DBConnectionCreator {
 

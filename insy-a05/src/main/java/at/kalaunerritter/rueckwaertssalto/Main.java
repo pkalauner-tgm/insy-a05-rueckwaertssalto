@@ -1,5 +1,12 @@
 package at.kalaunerritter.rueckwaertssalto;
 
+import at.kalaunerritter.Table;
+import at.kalaunerritter.TableCreator;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  * Main class <br>
  * Start of the program
@@ -13,13 +20,16 @@ public class Main {
      *
      * @param args command line arguments
      */
-    public static void main(String[] args) {
-        Exporter exporter = new Exporter();
-        ArgumentChecker ac = new ArgumentChecker(args, exporter);
-        // Invalid arguments --> exit program
-        if (!ac.checkArgs()) {
-            System.exit(1);
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/A01", "root", "");
+        TableCreator tc = new TableCreator(con);
+        tc.loadTables();
+
+        for (Table cur : tc.getTables()) {
+            System.out.println(cur.getTablename() + ":");
+            System.out.println(cur.getAttributes().toString());
+            System.out.println();
         }
-        exporter.export();
     }
 }

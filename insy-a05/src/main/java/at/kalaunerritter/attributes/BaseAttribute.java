@@ -13,6 +13,9 @@ public abstract class BaseAttribute {
     private String beginTags;
     private String endTags;
 
+    /**
+     * Attribute werden standardmaessig auf leeren Text gesetzt
+     */
     public BaseAttribute() {
         this.value = "";
         this.endTags = "";

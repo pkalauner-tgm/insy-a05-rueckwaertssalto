@@ -10,6 +10,13 @@ package at.kalaunerritter.attributes;
 public class ForeignKey extends Modifier {
 
 
+    /**
+     * Es werden die HTML-Tags für das Attribut hinzugefuegt und die Value geandert
+     *
+     * @param foreignTable die Tabelle, aus dem der Foreign Key stammt
+     * @param foreignAttribute das Attribut, aus das der Foreign Key verweist
+     * @param wrapper das Attribut, das dekoriert wird
+     */
     public ForeignKey(String foreignTable, String foreignAttribute, BaseAttribute wrapper) {
         super(wrapper);
 

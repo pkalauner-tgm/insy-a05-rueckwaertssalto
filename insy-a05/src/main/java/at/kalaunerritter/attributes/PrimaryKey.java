@@ -9,6 +9,11 @@ package at.kalaunerritter.attributes;
  */
 public class PrimaryKey extends Modifier {
 
+    /**
+     * Das Attribut wird dekoriert, idem die HTML-Tags hinzugefuegt werden (Tags fuer unterstrichen)
+     *
+     * @param wrapper das Attribut, das dekoriert wird
+     */
     public PrimaryKey(BaseAttribute wrapper) {
         super(wrapper);
 

@@ -9,6 +9,8 @@ package at.kalaunerritter.rueckwaertssalto.attributes;
  */
 public class ForeignKey extends Modifier {
 
+    private String foreignTable, foreignAttribute;
+
 
     /**
      * Es werden die HTML-Tags für das Attribut hinzugefuegt und die Value geandert
@@ -20,22 +22,29 @@ public class ForeignKey extends Modifier {
     public ForeignKey(String foreignTable, String foreignAttribute, BaseAttribute wrapper) {
         super(wrapper);
 
-        //HTML-Tags hinzufuegen
-        this.setBeginTags("<i>" + super.getWrapper().getBeginTags());
-        this.setEndTags(super.getWrapper().getEndTags() + "</i>");
-
-        //Die Value wird geandert, entweder auf attr4: RelY.attrZ oder nur auf RelY.attrZ bei gleichnamigen Attributen
-        if (super.getWrapper().getValue().contains(foreignAttribute))
-            this.setValue(foreignTable + "." + super.getWrapper().getValue());
-        else
-            this.setValue(super.getWrapper().getValue() + ": " + foreignTable + "." + foreignAttribute);
+        this.foreignAttribute = foreignAttribute;
+        this.foreignTable = foreignTable;
 
     }
 
+
     @Override
-    public String getHTMLValue() {
+    public String getBeginTags() {
+        return "<i>" + getWrapper().getBeginTags();
+    }
 
-        return this.getBeginTags() + this.getValue() + this.getEndTags();
+    @Override
+    public String getEndTags() {
+        return getWrapper().getEndTags() + "</i>";
+    }
 
+    @Override
+    public String getValue() {
+
+        //Die Value wird geandert, entweder auf attr4: RelY.attrZ oder nur auf RelY.attrZ bei gleichnamigen Attributen
+        if (super.getWrapper().getValue().contains(foreignAttribute))
+            return foreignTable + "." + super.getWrapper().getValue();
+        else
+            return super.getWrapper().getValue() + ": " + foreignTable + "." + foreignAttribute;
     }
 }

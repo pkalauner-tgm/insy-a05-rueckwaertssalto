@@ -15,7 +15,9 @@ public abstract class Modifier extends BaseAttribute {
         this.wrapper = wrapper;
     }
 
-    public abstract String getHTMLValue();
+    public abstract String getBeginTags();
+    public abstract String getEndTags();
+    public abstract String getValue();
 
     public BaseAttribute getWrapper() {
         return wrapper;

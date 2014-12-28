@@ -16,16 +16,21 @@ public class PrimaryKey extends Modifier {
      */
     public PrimaryKey(BaseAttribute wrapper) {
         super(wrapper);
-
-        //HTML-Tags hinzufuegen (unterstrichen)
-        this.setBeginTags("<u>" + super.getWrapper().getBeginTags());
-        this.setEndTags(super.getWrapper().getEndTags() + "</u>");
-
-        this.setValue(super.getWrapper().getValue());
     }
 
     @Override
-    public String getHTMLValue() {
-        return this.getBeginTags() + this.getValue() + this.getEndTags();
+    public String getBeginTags() {
+        return "<u>" + getWrapper().getBeginTags();
     }
+
+    @Override
+    public String getEndTags() {
+        return  getWrapper().getEndTags() + "</u>";
+    }
+
+    @Override
+    public String getValue() {
+        return getWrapper().getValue();
+    }
+
 }

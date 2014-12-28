@@ -10,16 +10,12 @@ package at.kalaunerritter.rueckwaertssalto.attributes;
 public abstract class BaseAttribute {
 
     private String value;
-    private String beginTags;
-    private String endTags;
 
     /**
      * Attribute werden standardmaessig auf leeren Text gesetzt
      */
     public BaseAttribute() {
         this.value = "";
-        this.endTags = "";
-        this.beginTags = "";
     }
 
     public String getValue() {
@@ -38,23 +34,17 @@ public abstract class BaseAttribute {
      * @return HTML-Darstellung des Datenbank-Attributes
      */
     public String getHTMLValue() {
-        return beginTags + value + endTags;
+        return getBeginTags() + getValue() + getEndTags();
     }
 
-    public void setBeginTags(String beginTags) {
-        this.beginTags = beginTags;
-    }
-
-    public void setEndTags(String endTags) {
-        this.endTags = endTags;
-    }
 
     public String getBeginTags() {
-        return beginTags;
+        return "";
     }
 
     public String getEndTags() {
-        return endTags;
+
+        return "";
     }
 
     @Override

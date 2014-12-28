@@ -19,6 +19,7 @@ import java.util.Collection;
 public class MyFileWriter {
     private static final Logger LOG = LogManager.getLogger(MyFileWriter.class);
     private static final String RM_FILENAME = "rm.html";
+    private static final String ERD_FILENAME = "erd.png";
 
     /**
      * Writes the RM to the file
@@ -62,5 +63,22 @@ public class MyFileWriter {
         for (BaseAttribute cur : col)
             sb.append(cur.getHTMLValue()).append(", ");
         return sb.substring(0, sb.lastIndexOf(", "));
+    }
+
+
+    /**
+     * writes the ERD to the file
+     *
+     * @param tables the collection with the tables
+     */
+    public static void writeERDToFile(Collection<Table> tables) {
+        GraphViz gv = new GraphViz();
+        gv.addln(gv.start_graph());
+        gv.addln("A -> B;");
+        gv.addln("A -> C;");
+        gv.addln(gv.end_graph());
+        LOG.debug(gv.getDotSource());
+        File out = new File(ERD_FILENAME);
+        gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), "png"), out);
     }
 }

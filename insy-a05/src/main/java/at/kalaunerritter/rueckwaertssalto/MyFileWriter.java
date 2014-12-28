@@ -2,6 +2,8 @@ package at.kalaunerritter.rueckwaertssalto;
 
 import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
 import at.kalaunerritter.rueckwaertssalto.attributes.ForeignKey;
+import fr.loria.graphviz.DotNotInstalledException;
+import fr.loria.graphviz.GraphViz;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 

@@ -87,5 +87,12 @@
             <artifactId>system-rules</artifactId>
             <version>1.7.0</version>
         </dependency>
+        <dependency>
+            <groupId>fr.lorial</groupId>
+            <artifactId>graphvizapi</artifactId>
+            <version>0.4</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/GraphVizJavaApi.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>

@@ -3,14 +3,11 @@ package at.kalaunerritter.rueckwaertssalto.connection;
 
 import at.kalaunerritter.rueckwaertssalto.TestAppender;
 import at.kalaunerritter.rueckwaertssalto.Main;
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
-
-import java.sql.SQLException;
 
 import static org.junit.Assert.assertTrue;
 
@@ -24,8 +21,6 @@ public class MySQLConnectionCreatorTest {
 
 
     private TestAppender testAppender;
-
-    private static final Logger LOG = LogManager.getLogger(MySQLConnectionCreatorTest.class);
 
 
     @Rule
@@ -55,9 +50,6 @@ public class MySQLConnectionCreatorTest {
 
 
         Main.getConnection().createConnection();
-
-
-
 
     }
 

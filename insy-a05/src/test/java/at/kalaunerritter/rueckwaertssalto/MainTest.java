@@ -1,6 +1,5 @@
 package at.kalaunerritter.rueckwaertssalto;
 
-import at.kalaunerritter.rueckwaertssalto.Main;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -44,8 +44,8 @@ public class MyFileWriter {
 
 
         for (Table cur : tables) {
-            writer.print(cur.getTablename() + ": ");
-            writer.println(collectionToString(cur.getAttributes()) + "<br>");
+            writer.print(cur.getTablename() + " (");
+            writer.println(collectionToString(cur.getAttributes()) + ")<br>");
         }
         writer.flush();
     }

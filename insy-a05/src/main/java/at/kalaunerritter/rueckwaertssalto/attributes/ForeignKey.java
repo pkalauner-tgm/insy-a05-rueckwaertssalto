@@ -47,4 +47,8 @@ public class ForeignKey extends Modifier {
         else
             return super.getWrapper().getValue() + ": " + foreignTable + "." + foreignAttribute;
     }
+
+    public String getForeignTable() {
+        return foreignTable;
+    }
 }

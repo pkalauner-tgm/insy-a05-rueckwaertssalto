@@ -3,6 +3,7 @@ package at.kalaunerritter.rueckwaertssalto;
 import at.kalaunerritter.rueckwaertssalto.attributes.Attribute;
 import at.kalaunerritter.rueckwaertssalto.attributes.ForeignKey;
 import at.kalaunerritter.rueckwaertssalto.attributes.PrimaryKey;
+import at.kalaunerritter.rueckwaertssalto.dbloader.Table;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

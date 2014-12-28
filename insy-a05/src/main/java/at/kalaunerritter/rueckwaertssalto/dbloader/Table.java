@@ -1,4 +1,4 @@
-package at.kalaunerritter.rueckwaertssalto;
+package at.kalaunerritter.rueckwaertssalto.dbloader;
 
 import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
 import at.kalaunerritter.rueckwaertssalto.attributes.PrimaryKey;

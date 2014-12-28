@@ -1,6 +1,7 @@
 package at.kalaunerritter.rueckwaertssalto;
 
 import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
+import at.kalaunerritter.rueckwaertssalto.attributes.PrimaryKey;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -50,5 +51,17 @@ public class Table {
 
     public List<BaseAttribute> getAttributes() {
         return attributes;
+    }
+
+    /**
+     * Checks if the entity is weak
+     *
+     * @return true if weak
+     */
+    public boolean isWeak() {
+        for (BaseAttribute cur : attributes)
+            if (cur instanceof PrimaryKey)
+                return false;
+        return true;
     }
 }

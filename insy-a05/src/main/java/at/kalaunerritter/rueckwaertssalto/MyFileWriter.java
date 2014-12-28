@@ -18,6 +18,7 @@ import java.util.Set;
  * Writes to a file
  *
  * @author Paul Kalauner 4AHIT
+ * @author Mathias Ritter 4AHIT
  * @version 20141226.1
  */
 public class MyFileWriter {
@@ -125,7 +126,7 @@ public class MyFileWriter {
         gv.addln();
 
         // Relationen (Diamanten) zum Dot-File hinzufuegen
-        gv.add("node [shape=diamond,style=filled,color=lightgrey]; " + sbRelations.toString() + "\n");
+        gv.add("node [shape=diamond]; " + sbRelations.toString() + "\n");
 
         // Verbindungslinien zum Dot-File hinzufuegen
         gv.add(sbConnections.toString());

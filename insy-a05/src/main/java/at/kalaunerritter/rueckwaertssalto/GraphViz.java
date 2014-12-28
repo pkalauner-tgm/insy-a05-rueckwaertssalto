@@ -159,17 +159,6 @@ public class GraphViz {
         }
     }
 
-    /**
-     * Writes the graph's image in a file.
-     *
-     * @param img  A byte array containing the image of the graph.
-     * @param file Name of the file to where we want to write.
-     * @return Success: 1, Failure: -1
-     */
-    public int writeGraphToFile(byte[] img, String file) {
-        File to = new File(file);
-        return writeGraphToFile(img, to);
-    }
 
     /**
      * Writes the graph's image in a file.
@@ -271,30 +260,7 @@ public class GraphViz {
         return "}";
     }
 
-    /**
-     * Read a DOT graph from a text file.
-     *
-     * @param input Input text file containing the DOT graph
-     *              source.
-     */
-    public void readSource(String input) {
-        StringBuilder sb = new StringBuilder();
 
-        try {
-            FileInputStream fis = new FileInputStream(input);
-            DataInputStream dis = new DataInputStream(fis);
-            BufferedReader br = new BufferedReader(new InputStreamReader(dis));
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-            }
-            dis.close();
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-        }
-
-        this.graph = sb;
-    }
 
 } // end of class GraphViz
 

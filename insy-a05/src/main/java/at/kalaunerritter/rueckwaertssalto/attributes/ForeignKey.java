@@ -42,10 +42,10 @@ public class ForeignKey extends Modifier {
     public String getValue() {
 
         //Die Value wird geandert, entweder auf attr4: RelY.attrZ oder nur auf RelY.attrZ bei gleichnamigen Attributen
-        if (super.getWrapper().getValue().contains(foreignAttribute))
-            return foreignTable + "." + super.getWrapper().getValue();
+        if (getWrapper().getValue().contains(foreignAttribute))
+            return foreignTable + "." + getWrapper().getValue();
         else
-            return super.getWrapper().getValue() + ": " + foreignTable + "." + foreignAttribute;
+            return getWrapper().getValue() + ": " + foreignTable + "." + foreignAttribute;
     }
 
     public String getForeignTable() {

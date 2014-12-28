@@ -40,16 +40,19 @@ public class TableCreator {
     }
 
     /**
-     * gets all Tables and their attributes of the DB
+     * gets all Tables
+     *
+     * @param addAttrs true if the table's attributes should also be loaded
      */
-    public void loadTables() {
+    public void loadTables(boolean addAttrs) {
         try {
             // Get all tables
             ResultSet rs = dbmd.getTables(null, null, "%", null);
             while (rs.next()) {
                 String tablename = rs.getString(3);
                 Table t = new Table(tablename);
-                t.addAttributes(AttributeLoader.loadAttributes(con, tablename));
+                if (addAttrs)
+                    t.addAttributes(AttributeLoader.loadAttributes(con, tablename));
                 this.tables.add(t);
             }
 
@@ -58,6 +61,14 @@ public class TableCreator {
         }
     }
 
+    /**
+     * gets all Tables and their attributes
+     */
+    public void loadTables() {
+        loadTables(true);
+    }
+
+    @SuppressWarnings("JavaDoc")
     public List<Table> getTables() {
         return tables;
     }

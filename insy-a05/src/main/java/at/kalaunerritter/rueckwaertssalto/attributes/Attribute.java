@@ -16,7 +16,6 @@ public class Attribute extends BaseAttribute {
      * @param value value des Attributs
      */
     public Attribute(String value) {
-        super();
-        super.setValue(value);
+        super(value);
     }
 }

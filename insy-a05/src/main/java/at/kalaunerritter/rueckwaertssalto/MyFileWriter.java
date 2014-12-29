@@ -2,6 +2,7 @@ package at.kalaunerritter.rueckwaertssalto;
 
 import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
 import at.kalaunerritter.rueckwaertssalto.attributes.ForeignKey;
+import at.kalaunerritter.rueckwaertssalto.attributes.PrimaryKey;
 import at.kalaunerritter.rueckwaertssalto.dbloader.Table;
 import fr.loria.graphviz.DotNotInstalledException;
 import fr.loria.graphviz.GraphViz;
@@ -104,23 +105,50 @@ public class MyFileWriter {
         // Fuer jede Tabelle...
         for (Table table : tables) {
             boolean weak = table.isWeak();
+
+
             // durch alle Attribute jeder Tabelle iterieren
             for (BaseAttribute attr : table.getAttributes()) {
-                if (!(attr instanceof ForeignKey)) {
+
+                if (!(attr.isForeignKey())) {
+
                     // Falls es sich nicht um einen Foreign Key handelt, stelle das Attribut dar
                     gv.add("{node [label=<" + attr.getHTMLValue() + ">] " + attr.getValue() + counter + ";};");
+
                     // Tabelle mit Attribut durch einen Strich verbinden
                     sbConnections.append(attr.getValue()).append(counter++).append(" -- ").append(table.getTablename()).append(";\n");
+
                 } else {
+
                     // Falls es sich schon um einen Foreign Key handelt, erzeuge Relation
                     ForeignKey fk = (ForeignKey) attr;
                     String relationName = "\"" + table.getTablename() + "-" + fk.getForeignTable() + "\"";
-                    // Falls es sich um einen Foreign Key handelt, stelle den Rahmen der Beziehung doppelt dar
+
+                    // Falls es sich um eine schwache Entitaet handelt, stelle den Rahmen der Beziehung doppelt dar
                     sbRelations.append(relationName).append(weak ? " [peripheries=2]" : "").append(";");
-                    // Relation mit Tabellen verbinden. Hierbei wird ein Set verwendet, um doppelte Verbindungen zu vermeiden
-                    // Falls es sich um einen Foreign Key handelt stelle die Verbindung mit doppelten Linien dar
-                    fkConnections.add(relationName + " -- " + table.getTablename() + " [label=\"1\",len=1.00" + (weak ? ",color=\"black:white:black\"" : "") + "];\n");
-                    fkConnections.add(fk.getForeignTable() + " -- " + relationName + " [label=\"n\",len=1.00];\n");
+
+                    // Ueberpruefen, ob es sich um eine 1:1 Relation handelt. Wenn nicht, dann handelt es sich um eine 1:n Relation
+                    if (table.isOneToOne(fk, tables)) {
+
+                        // Relation mit Tabellen verbinden. Hierbei wird ein Set verwendet, um doppelte Verbindungen zu vermeiden
+                        // Falls es sich um eine schwache Entitaet handelt stelle die Verbindung mit doppelten Linien dar
+                        fkConnections.add(relationName + " -- " + table.getTablename() + " [label=\"1\",len=1.00" + (weak ? ",color=\"black:white:black\"" : "") + "];\n");
+                        fkConnections.add(fk.getForeignTable() + " -- " + relationName + " [label=\"1\",len=1.00];\n");
+
+                    } else {
+
+                        // Relation mit Tabellen verbinden. Hierbei wird ein Set verwendet, um doppelte Verbindungen zu vermeiden
+                        // Falls es sich um eine schwache Entitaet handelt stelle die Verbindung mit doppelten Linien dar
+                        fkConnections.add(relationName + " -- " + table.getTablename() + " [label=\"1\",len=1.00" + (weak ? ",color=\"black:white:black\"" : "") + "];\n");
+                        fkConnections.add(fk.getForeignTable() + " -- " + relationName + " [label=\"n\",len=1.00];\n");
+
+                    }
+
+
+
+
+
+
                 }
             }
 

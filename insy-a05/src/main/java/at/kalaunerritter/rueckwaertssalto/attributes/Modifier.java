@@ -12,6 +12,7 @@ public abstract class Modifier extends BaseAttribute {
     private BaseAttribute wrapper;
 
     public Modifier(BaseAttribute wrapper) {
+        super(wrapper.getOriginalValue());
         this.wrapper = wrapper;
     }
 

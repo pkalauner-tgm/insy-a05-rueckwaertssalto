@@ -1,6 +1,7 @@
 package at.kalaunerritter.rueckwaertssalto.dbloader;
 
 import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
+import at.kalaunerritter.rueckwaertssalto.attributes.ForeignKey;
 import at.kalaunerritter.rueckwaertssalto.attributes.PrimaryKey;
 
 import java.util.ArrayList;
@@ -60,8 +61,57 @@ public class Table {
      */
     public boolean isWeak() {
         for (BaseAttribute cur : attributes)
-            if (cur instanceof PrimaryKey)
-                return false;
+            if (cur.isPrimaryKey())
+                if (!cur.isForeignKey())
+                    return false;
+
         return true;
     }
+
+    /**
+     * Ueberpruefen, ob es sich um eine 1:1 Relation handelt.
+     *
+     * @param fk ForeignKey
+     * @param tables Alle Tabellen
+     * @return True wenn es eine 1:1 Beziehung ist
+     */
+    public boolean isOneToOne(ForeignKey fk, List<Table> tables) {
+
+        boolean oneToOneRelation = false;
+
+        //Die Entitaet muss schwach sein und der ForeignKey muss auch PrimaryKey sein
+        if (this.isWeak() && fk.isPrimaryKey()) {
+
+            //Die andere Tabelle (auf die der ForeignKey verweist) wird gesucht
+            Table foreignTable = null;
+            for (Table table1 : tables)
+                if (table1.getTablename().equals(fk.getForeignTable()))
+                    foreignTable = table1;
+
+            //Wenn sie gefunden wurde (nicht null ist), dann werden die Attribute durchsucht
+            //Das Attribut muss ein Primary Key sein, und es muss der einzige sein.
+            if (foreignTable != null) {
+                for (BaseAttribute attr : foreignTable.getAttributes())
+                    if (attr.isPrimaryKey())
+                        if (attr.getOriginalValue().equals(fk.getForeignAttribute()))
+                            oneToOneRelation = true;
+                        else
+                            oneToOneRelation = false;
+
+
+            }
+
+            //In der aktuellen Tabelle darf es nur den ForeignKey als PrimaryKey geben
+            for (BaseAttribute attr: this.getAttributes())
+                if (attr.isPrimaryKey()) {
+                    if (!attr.getOriginalValue().equals(fk.getOriginalValue()))
+                        oneToOneRelation = false;
+                }
+
+        }
+
+        return oneToOneRelation;
+
+    }
+
 }

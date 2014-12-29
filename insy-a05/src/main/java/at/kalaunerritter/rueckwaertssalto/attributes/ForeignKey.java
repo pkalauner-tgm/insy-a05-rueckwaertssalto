@@ -9,7 +9,9 @@ package at.kalaunerritter.rueckwaertssalto.attributes;
  */
 public class ForeignKey extends Modifier {
 
-    private String foreignTable, foreignAttribute;
+    private String foreignTable;
+
+    private String foreignAttribute;
 
 
     /**
@@ -24,6 +26,10 @@ public class ForeignKey extends Modifier {
 
         this.foreignAttribute = foreignAttribute;
         this.foreignTable = foreignTable;
+
+        setForeignKey();
+        if (wrapper.isPrimaryKey())
+            setPrimaryKey();
 
     }
 
@@ -42,7 +48,7 @@ public class ForeignKey extends Modifier {
     public String getValue() {
 
         //Die Value wird geandert, entweder auf attr4: RelY.attrZ oder nur auf RelY.attrZ bei gleichnamigen Attributen
-        if (getWrapper().getValue().contains(foreignAttribute))
+        if (getWrapper().getOriginalValue().equals(foreignAttribute))
             return foreignTable + "." + getWrapper().getValue();
         else
             return getWrapper().getValue() + ": " + foreignTable + "." + foreignAttribute;
@@ -50,5 +56,9 @@ public class ForeignKey extends Modifier {
 
     public String getForeignTable() {
         return foreignTable;
+    }
+
+    public String getForeignAttribute() {
+        return foreignAttribute;
     }
 }

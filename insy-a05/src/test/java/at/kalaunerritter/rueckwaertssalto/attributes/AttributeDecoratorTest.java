@@ -51,7 +51,7 @@ public class AttributeDecoratorTest {
 
 
     /**
-     * Testen, ob ein als Primary Key & Foreign Key dekoriertes Datenbank-Attribut richtig als HTML-String ausgegeben wird
+     * Testen, ob ein als Primary Key und Foreign Key dekoriertes Datenbank-Attribut richtig als HTML-String ausgegeben wird
      */
     @Test
     public void testBaseAttributeWithForeignKeyPrimaryKey() {
@@ -61,7 +61,7 @@ public class AttributeDecoratorTest {
 
 
     /**
-     * Testen, ob ein als Primary Key & Foreign Key dekoriertes Datenbank-Attribut richtig als HTML-String ausgegeben wird
+     * Testen, ob ein als Primary Key und Foreign Key dekoriertes Datenbank-Attribut richtig als HTML-String ausgegeben wird
      */
     @Test
     public void testBaseAttributeWithForeignKeyPrimaryKey2() {

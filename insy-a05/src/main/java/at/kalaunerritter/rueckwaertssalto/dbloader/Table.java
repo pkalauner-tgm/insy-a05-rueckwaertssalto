@@ -2,7 +2,6 @@ package at.kalaunerritter.rueckwaertssalto.dbloader;
 
 import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
 import at.kalaunerritter.rueckwaertssalto.attributes.ForeignKey;
-import at.kalaunerritter.rueckwaertssalto.attributes.PrimaryKey;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -61,17 +60,15 @@ public class Table {
      */
     public boolean isWeak() {
         for (BaseAttribute cur : attributes)
-            if (cur.isPrimaryKey())
-                if (!cur.isForeignKey())
-                    return false;
-
-        return true;
+            if (cur.isPrimaryKey() && cur.isForeignKey())
+                return true;
+        return false;
     }
 
     /**
      * Ueberpruefen, ob es sich um eine 1:1 Relation handelt.
      *
-     * @param fk ForeignKey
+     * @param fk     ForeignKey
      * @param tables Alle Tabellen
      * @return True wenn es eine 1:1 Beziehung ist
      */
@@ -93,16 +90,11 @@ public class Table {
             if (foreignTable != null) {
                 for (BaseAttribute attr : foreignTable.getAttributes())
                     if (attr.isPrimaryKey())
-                        if (attr.getOriginalValue().equals(fk.getForeignAttribute()))
-                            oneToOneRelation = true;
-                        else
-                            oneToOneRelation = false;
-
-
+                        oneToOneRelation = attr.getOriginalValue().equals(fk.getForeignAttribute());
             }
 
             //In der aktuellen Tabelle darf es nur den ForeignKey als PrimaryKey geben
-            for (BaseAttribute attr: this.getAttributes())
+            for (BaseAttribute attr : this.getAttributes())
                 if (attr.isPrimaryKey()) {
                     if (!attr.getOriginalValue().equals(fk.getOriginalValue()))
                         oneToOneRelation = false;

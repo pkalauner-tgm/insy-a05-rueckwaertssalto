@@ -56,6 +56,10 @@ public abstract class BaseAttribute {
         return false;
     }
 
+    public boolean isUnique() {
+        return false;
+    }
+
     @Override
     public String toString() {
         return getValue();

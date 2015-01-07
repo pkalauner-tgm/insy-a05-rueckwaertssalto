@@ -69,7 +69,8 @@ public class MyFileWriterTest {
         t.addAttribute(new Attribute("attribute2"));
         list.add(t);
 
-        MyFileWriter.writeRmToFile(list);
+        MyFileWriter fw = new MyFileWriter(list);
+        fw.writeRMToFile();
 
         BufferedReader br = new BufferedReader(new FileReader(rmFile));
         assertEquals("table1 (attribute1, attribute2)<br>", br.readLine());
@@ -93,7 +94,8 @@ public class MyFileWriterTest {
         t.addAttribute(new Attribute("attribute2"));
         list.add(t);
 
-        MyFileWriter.writeRmToFile(list);
+        MyFileWriter fw = new MyFileWriter(list);
+        fw.writeRMToFile();
 
         BufferedReader br = new BufferedReader(new FileReader(rmFile));
         assertEquals("table1 (attribute1, attribute2)<br>", br.readLine());
@@ -112,7 +114,8 @@ public class MyFileWriterTest {
         t.addAttribute(new Attribute("attribute1"));
         list.add(t);
 
-        MyFileWriter.writeRmToFile(list);
+        MyFileWriter fw = new MyFileWriter(list);
+        fw.writeRMToFile();
 
         BufferedReader br = new BufferedReader(new FileReader(rmFile));
         assertEquals("table1 (attribute1)<br>", br.readLine());
@@ -130,7 +133,8 @@ public class MyFileWriterTest {
         t.addAttribute(new PrimaryKey(new Attribute("attribute1")));
         list.add(t);
 
-        MyFileWriter.writeERDToFile(list);
+        MyFileWriter fw = new MyFileWriter(list);
+        fw.writeERDToFile();
 
         BufferedReader br = new BufferedReader(new FileReader(erdFile));
         assertEquals("graph ERD {", br.readLine());
@@ -158,8 +162,8 @@ public class MyFileWriterTest {
         t2.addAttribute(new PrimaryKey(new Attribute("attribute1")));
         list.add(t2);
 
-
-        MyFileWriter.writeERDToFile(list);
+        MyFileWriter fw = new MyFileWriter(list);
+        fw.writeERDToFile();
 
         BufferedReader br = new BufferedReader(new FileReader(erdFile));
 
@@ -187,7 +191,8 @@ public class MyFileWriterTest {
         t.addAttribute(new Attribute("attribute2"));
         list.add(t);
 
-        MyFileWriter.writeERDToFile(list);
+        MyFileWriter fw = new MyFileWriter(list);
+        fw.writeERDToFile();
 
         BufferedReader br = new BufferedReader(new FileReader(erdFile));
 

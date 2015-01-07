@@ -2,7 +2,6 @@ package at.kalaunerritter.rueckwaertssalto;
 
 import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
 import at.kalaunerritter.rueckwaertssalto.attributes.ForeignKey;
-import at.kalaunerritter.rueckwaertssalto.attributes.PrimaryKey;
 import at.kalaunerritter.rueckwaertssalto.dbloader.Table;
 import fr.loria.graphviz.DotNotInstalledException;
 import fr.loria.graphviz.GraphViz;
@@ -13,7 +12,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,13 +27,21 @@ public class MyFileWriter {
     private static final Logger LOG = LogManager.getLogger(MyFileWriter.class);
     private static final String RM_FILENAME = "rm.html";
     private static final String ERD_FILENAME = "erd.png";
+    private List<Table> tables;
+
+    /**
+     * Initializes the FileWriter with the given table list
+     *
+     * @param tables list with tables
+     */
+    public MyFileWriter(List<Table> tables) {
+        this.tables = tables;
+    }
 
     /**
      * Writes the RM to the file
-     *
-     * @param tables the collection with the tables
      */
-    public static void writeRmToFile(Collection<Table> tables) {
+    public void writeRMToFile() {
         PrintWriter writer;
         File f = new File(RM_FILENAME);
         // if file exists already, delete it
@@ -77,10 +83,8 @@ public class MyFileWriter {
 
     /**
      * writes the ERD to the file
-     *
-     * @param tables list with the tables
      */
-    public static void writeERDToFile(List<Table> tables) {
+    public void writeERDToFile() {
         int counter = 0;
         Set<String> fkConnections = new HashSet<>();
 
@@ -143,10 +147,6 @@ public class MyFileWriter {
                         fkConnections.add(fk.getForeignTable() + " -- " + relationName + " [label=\"n\",len=1.00];\n");
 
                     }
-
-
-
-
 
 
                 }

@@ -19,8 +19,8 @@ import java.util.List;
  */
 public class TableCreator {
     private static final Logger LOG = LogManager.getLogger(TableCreator.class);
-    private Connection con;
     private DatabaseMetaData dbmd;
+    private AttributeLoader attributeLoader;
 
     private List<Table> tables;
 
@@ -31,9 +31,9 @@ public class TableCreator {
      */
     public TableCreator(Connection con) {
         this.tables = new ArrayList<>();
-        this.con = con;
         try {
             this.dbmd = con.getMetaData();
+            this.attributeLoader = new AttributeLoader(con);
         } catch (SQLException e) {
             LOG.error("Could not get MetaData", e);
         }
@@ -52,7 +52,7 @@ public class TableCreator {
                 String tablename = rs.getString(3);
                 Table t = new Table(tablename);
                 if (addAttrs)
-                    t.addAttributes(AttributeLoader.loadAttributes(con, tablename));
+                    t.addAttributes(attributeLoader.loadAttributes(tablename));
                 this.tables.add(t);
             }
 

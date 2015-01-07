@@ -36,8 +36,9 @@ public class Main {
 
             TableCreator tc = new TableCreator(con);
             tc.loadTables();
-            MyFileWriter.writeRmToFile(tc.getTables());
-            MyFileWriter.writeERDToFile(tc.getTables());
+            MyFileWriter fw = new MyFileWriter(tc.getTables());
+            fw.writeRMToFile();
+            fw.writeERDToFile();
         }
     }
 

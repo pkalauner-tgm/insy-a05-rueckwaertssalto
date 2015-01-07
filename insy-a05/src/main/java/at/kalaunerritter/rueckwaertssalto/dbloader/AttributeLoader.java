@@ -20,22 +20,32 @@ import java.util.Map;
  */
 public class AttributeLoader {
     private static final Logger LOG = LogManager.getLogger(AttributeLoader.class);
+    private Connection con;
+    private DatabaseMetaData dbmd;
 
-    private AttributeLoader() {
+    /**
+     * Initializes the AttributeLoader with the given Connection
+     *
+     * @param con the connection with a specific database
+     */
+    public AttributeLoader(Connection con) {
+        this.con = con;
+        try {
+            this.dbmd = con.getMetaData();
+        } catch (SQLException e) {
+            LOG.error("Could not get MetaData", e);
+        }
     }
-
 
     /**
      * Loads all attributes of the given table
      *
-     * @param con       the connection with a specific database
      * @param tablename the name of the table
      * @return Collection with the attributes of the given table
      */
-    public static Collection<BaseAttribute> loadAttributes(Connection con, String tablename) {
+    public Collection<BaseAttribute> loadAttributes(String tablename) {
         LOG.debug("Getting attributes for table " + tablename);
         try {
-            DatabaseMetaData dbmd = con.getMetaData();
             Map<String, BaseAttribute> map = new HashMap<>();
 
             // gets all columns of the table

@@ -71,7 +71,8 @@ public class AttributeLoaderTest {
      */
     @Test
     public void testLoadAttributes() {
-        Collection<BaseAttribute> attributes = AttributeLoader.loadAttributes(con, "Table");
+        AttributeLoader al = new AttributeLoader(con);
+        Collection<BaseAttribute> attributes = al.loadAttributes("Table");
         assertEquals("[ForeignTable.Column]", attributes.toString());
     }
 }

@@ -8,7 +8,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +33,7 @@ public class MyFileWriterTest {
     @Before
     public void setUp() {
         this.rmFile = new File("rm.html");
-        this.erdFile = new File ("erd.dot");
+        this.erdFile = new File("erd.dot");
     }
 
     /**
@@ -165,7 +168,7 @@ public class MyFileWriterTest {
         assertEquals("node [shape=ellipse]; {node [label=<<u>attribute1</u>>] attribute10;};", br.readLine());
         assertEquals("node [shape=diamond]; \"table1-table2\" [peripheries=2];", br.readLine());
         assertEquals("attribute10 -- table2;", br.readLine());
-        assertEquals("table2 -- \"table1-table2\" [label=\"n\",len=1.00];", br.readLine());
+        assertEquals("table2 -- \"table1-table2\" [label=\"1\",len=1.00];", br.readLine());
         assertEquals("\"table1-table2\" -- table1 [label=\"1\",len=1.00,color=\"black:white:black\"];", br.readLine());
         assertEquals("}", br.readLine());
     }

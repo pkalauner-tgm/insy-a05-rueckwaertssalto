@@ -33,6 +33,8 @@ public class AttributeLoaderTest {
         ResultSet rs = mock(ResultSet.class);
         ResultSet pks = mock(ResultSet.class);
         ResultSet foreignKeys = mock(ResultSet.class);
+        ResultSet uniques = mock(ResultSet.class);
+
 
         //Connection mocken
         when(con.getCatalog()).thenReturn("Bla");
@@ -51,10 +53,14 @@ public class AttributeLoaderTest {
         when(foreignKeys.getString("PKTABLE_NAME")).thenReturn("ForeignTable");
         when(foreignKeys.getString("PKCOLUMN_NAME")).thenReturn("Column");
 
+        //ResultSet der Unique Attributes mocken
+        when(uniques.getString("INDEX_NAME")).thenReturn(null);
+
         //DB-Metadaten mocken
         when(dbmd.getColumns(null, null, "Table", null)).thenReturn(rs);
         when(dbmd.getPrimaryKeys(con.getCatalog(), null, "Table")).thenReturn(pks);
         when(dbmd.getImportedKeys(con.getCatalog(), null, "Table")).thenReturn(foreignKeys);
+        when(dbmd.getIndexInfo(con.getCatalog(), null, "Table", true, true)).thenReturn(uniques);
 
         //Connection mocken
         when(con.getMetaData()).thenReturn(dbmd);

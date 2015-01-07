@@ -20,7 +20,7 @@ public class Unique extends Modifier {
 
     @Override
     public String getEndTags() {
-        return getWrapper().getEndTags() + "[UNIQUE]";
+        return getWrapper().getEndTags() + " <UNIQUE>";
     }
 
     @Override

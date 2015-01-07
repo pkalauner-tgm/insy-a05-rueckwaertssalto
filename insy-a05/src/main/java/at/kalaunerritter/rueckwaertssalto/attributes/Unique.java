@@ -1,7 +1,10 @@
 package at.kalaunerritter.rueckwaertssalto.attributes;
 
 /**
- * Created by Mathias on 07.01.15.
+ * Unique ist ein Decorator, welcher ein Attribut zu einem Unqiue-Attribut macht.
+ *
+ * @author Mathias Ritter 4AHIT
+ * @version 20150107.1
  */
 public class Unique extends Modifier {
 

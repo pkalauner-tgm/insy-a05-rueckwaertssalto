@@ -16,10 +16,6 @@ public class PrimaryKey extends Modifier {
      */
     public PrimaryKey(BaseAttribute wrapper) {
         super(wrapper);
-        setPrimaryKey();
-
-        if (wrapper.isForeignKey())
-            setForeignKey();
     }
 
     @Override
@@ -35,6 +31,16 @@ public class PrimaryKey extends Modifier {
     @Override
     public String getValue() {
         return getWrapper().getValue();
+    }
+
+    @Override
+    public boolean isPrimaryKey() {
+        return true;
+    }
+
+    @Override
+    public boolean isForeignKey() {
+        return getWrapper().isForeignKey();
     }
 
 }

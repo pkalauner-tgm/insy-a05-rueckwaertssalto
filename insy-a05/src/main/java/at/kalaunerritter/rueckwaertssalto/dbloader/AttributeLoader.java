@@ -1,9 +1,6 @@
 package at.kalaunerritter.rueckwaertssalto.dbloader;
 
-import at.kalaunerritter.rueckwaertssalto.attributes.Attribute;
-import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
-import at.kalaunerritter.rueckwaertssalto.attributes.ForeignKey;
-import at.kalaunerritter.rueckwaertssalto.attributes.PrimaryKey;
+import at.kalaunerritter.rueckwaertssalto.attributes.*;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -67,6 +64,18 @@ public class AttributeLoader {
                 // get the attribute out of the map, decorate it and put it back into the map
                 BaseAttribute attr = map.get(fkColumnName);
                 map.put(fkColumnName, new ForeignKey(pkTableName, pkColumnName, attr));
+            }
+
+            // get unique attributes of the table
+            ResultSet uniques = dbmd.getIndexInfo(con.getCatalog(), null, tablename, true, true);
+            while (uniques.next()) {
+                String indexName = uniques.getString("INDEX_NAME");
+                if (indexName == null)
+                    continue;
+                String columnName = uniques.getString("COLUMN_NAME");
+                BaseAttribute attr = map.get(columnName);
+                if (!attr.isPrimaryKey() && !attr.isForeignKey())
+                    map.put(columnName, new Unique(attr));
             }
             return map.values();
         } catch (SQLException e) {

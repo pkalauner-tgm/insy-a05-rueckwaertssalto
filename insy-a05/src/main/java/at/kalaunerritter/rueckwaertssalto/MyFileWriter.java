@@ -167,8 +167,6 @@ public class MyFileWriter {
 
         gv.add(gv.end_graph());
 
-
-        LOG.debug("Dot-File Content:\n" + gv.getDotSource());
         File out = new File(ERD_FILENAME);
         LOG.info("Writing ERD to " + out.getAbsolutePath());
 

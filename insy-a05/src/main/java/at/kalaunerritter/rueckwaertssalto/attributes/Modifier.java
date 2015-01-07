@@ -20,6 +20,10 @@ public abstract class Modifier extends BaseAttribute {
     public abstract String getEndTags();
     public abstract String getValue();
 
+    public abstract boolean isPrimaryKey();
+    public abstract boolean isForeignKey();
+
+
     public BaseAttribute getWrapper() {
         return wrapper;
     }

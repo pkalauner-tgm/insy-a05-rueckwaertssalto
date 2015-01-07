@@ -27,10 +27,6 @@ public class ForeignKey extends Modifier {
         this.foreignAttribute = foreignAttribute;
         this.foreignTable = foreignTable;
 
-        setForeignKey();
-        if (wrapper.isPrimaryKey())
-            setPrimaryKey();
-
     }
 
 
@@ -52,6 +48,16 @@ public class ForeignKey extends Modifier {
             return foreignTable + "." + getWrapper().getValue();
         else
             return getWrapper().getValue() + ": " + foreignTable + "." + foreignAttribute;
+    }
+
+    @Override
+    public boolean isPrimaryKey() {
+        return getWrapper().isPrimaryKey();
+    }
+
+    @Override
+    public boolean isForeignKey() {
+        return true;
     }
 
     public String getForeignTable() {

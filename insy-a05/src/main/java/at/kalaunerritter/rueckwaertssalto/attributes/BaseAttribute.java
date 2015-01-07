@@ -11,16 +11,12 @@ public abstract class BaseAttribute {
 
     private String value, originalValue;
 
-    private boolean primaryKey, foreignKey;
-
     /**
      * Attribute werden standardmaessig auf leeren Text gesetzt
      */
     public BaseAttribute(String value) {
         this.value = value;
         this.originalValue = value;
-        this.primaryKey = false;
-        this.foreignKey = false;
     }
 
     public String getValue() {
@@ -53,19 +49,11 @@ public abstract class BaseAttribute {
     }
 
     public boolean isPrimaryKey() {
-        return primaryKey;
-    }
-
-    public void setPrimaryKey() {
-        this.primaryKey = true;
+        return false;
     }
 
     public boolean isForeignKey() {
-        return foreignKey;
-    }
-
-    public void setForeignKey() {
-        this.foreignKey = true;
+        return false;
     }
 
     @Override

@@ -143,8 +143,8 @@ public class MyFileWriter {
 
                         // Relation mit Tabellen verbinden. Hierbei wird ein Set verwendet, um doppelte Verbindungen zu vermeiden
                         // Falls es sich um eine schwache Entitaet handelt stelle die Verbindung mit doppelten Linien dar
-                        fkConnections.add(relationName + " -- " + table.getTablename() + " [label=\"1\",len=1.00" + (weak ? ",color=\"black:white:black\"" : "") + "];\n");
-                        fkConnections.add(fk.getForeignTable() + " -- " + relationName + " [label=\"n\",len=1.00];\n");
+                        fkConnections.add(relationName + " -- " + table.getTablename() + " [label=\"n\",len=1.00" + (weak ? ",color=\"black:white:black\"" : "") + "];\n");
+                        fkConnections.add(fk.getForeignTable() + " -- " + relationName + " [label=\"1\",len=1.00];\n");
 
                     }
 

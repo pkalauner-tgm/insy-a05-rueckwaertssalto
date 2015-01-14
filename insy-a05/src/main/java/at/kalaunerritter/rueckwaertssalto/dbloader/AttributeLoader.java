@@ -4,10 +4,7 @@ import at.kalaunerritter.rueckwaertssalto.attributes.*;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -87,6 +84,22 @@ public class AttributeLoader {
                 if (!attr.isPrimaryKey() && !attr.isForeignKey())
                     map.put(columnName, new Unique(attr));
             }
+
+
+            // get not null constraints
+            rs.beforeFirst();
+            ResultSet rsNullable = con.createStatement().executeQuery("SELECT * FROM " + tablename);
+            ResultSetMetaData rsmd = rsNullable.getMetaData();
+            int i = 0;
+            while (rs.next()) {
+                i++;
+                String columnName = rs.getString("COLUMN_NAME");
+                BaseAttribute attr = map.get(columnName);
+                if (!attr.isPrimaryKey() && (rsmd.isNullable(i) == ResultSetMetaData.columnNoNulls)) {
+                    map.put(columnName, new NotNull(attr));
+                }
+            }
+
             return map.values();
         } catch (SQLException e) {
             LOG.error("Error while loading Attributes", e);

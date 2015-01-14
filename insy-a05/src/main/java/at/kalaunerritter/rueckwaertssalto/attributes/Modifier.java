@@ -22,9 +22,6 @@ public abstract class Modifier extends BaseAttribute {
 
     public abstract boolean isPrimaryKey();
     public abstract boolean isForeignKey();
-    public abstract boolean isUnique();
-
-
 
     public BaseAttribute getWrapper() {
         return wrapper;

@@ -178,6 +178,37 @@ public class MyFileWriterTest {
     }
 
     /**
+     * Tries to create a ERD of two tables and one foreign key
+     *
+     * @throws IOException should not happen
+     */
+    @Test
+    public void testERDTwoTablesOneForeignKey2() throws IOException {
+        List<Table> list = new ArrayList<>();
+        Table t = new Table("table1");
+        t.addAttribute(new ForeignKey("table2", "attribute1", new Attribute("attribute1")));
+        list.add(t);
+
+        Table t2 = new Table("table2");
+        t2.addAttribute(new PrimaryKey(new Attribute("attribute1")));
+        list.add(t2);
+
+        MyFileWriter fw = new MyFileWriter(list);
+        fw.writeERDToFile();
+
+        BufferedReader br = new BufferedReader(new FileReader(erdFile));
+
+        assertEquals("graph ERD {", br.readLine());
+        assertEquals("node [shape=box]; table1; table2; ", br.readLine());
+        assertEquals("node [shape=ellipse]; {node [label=<<u>attribute1</u>>] attribute10;};", br.readLine());
+        assertEquals("node [shape=diamond]; \"table1-table2\";", br.readLine());
+        assertEquals("attribute10 -- table2;", br.readLine());
+        assertEquals("\"table1-table2\" -- table1 [label=\"1\",len=1.00];", br.readLine());
+        assertEquals("table2 -- \"table1-table2\" [label=\"n\",len=1.00];", br.readLine());
+        assertEquals("}", br.readLine());
+    }
+
+    /**
      * Tries to create a ERD of one table and two primary keys
      *
      * @throws IOException should not happen

@@ -43,9 +43,4 @@ public class PrimaryKey extends Modifier {
         return getWrapper().isForeignKey();
     }
 
-    @Override
-    public boolean isUnique() {
-        return getWrapper().isUnique();
-    }
-
 }

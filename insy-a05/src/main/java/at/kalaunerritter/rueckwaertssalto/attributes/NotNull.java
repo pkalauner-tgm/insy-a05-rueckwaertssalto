@@ -1,15 +1,15 @@
 package at.kalaunerritter.rueckwaertssalto.attributes;
 
 /**
- * Unique ist ein Decorator, welcher ein Attribut zu einem Unqiue-Attribut macht.
+ * Unique ist ein Decorator, welcher ein Attribut als NOT NULL kennzeichnet
  *
  * @author Mathias Ritter 4AHIT
  * @version 20150107.1
  */
-public class Unique extends Modifier {
+public class NotNull extends Modifier {
 
 
-    public Unique(BaseAttribute wrapper) {
+    public NotNull(BaseAttribute wrapper) {
         super(wrapper);
     }
 
@@ -20,7 +20,7 @@ public class Unique extends Modifier {
 
     @Override
     public String getEndTags() {
-        return getWrapper().getEndTags() + " &lt;UNIQUE&gt;";
+        return getWrapper().getEndTags() + " &lt;NOT NULL&gt;";
     }
 
     @Override
@@ -37,4 +37,5 @@ public class Unique extends Modifier {
     public boolean isForeignKey() {
         return getWrapper().isForeignKey();
     }
+
 }

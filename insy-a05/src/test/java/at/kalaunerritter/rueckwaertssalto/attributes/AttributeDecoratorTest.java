@@ -69,4 +69,13 @@ public class AttributeDecoratorTest {
         assertEquals("<u><i>Test: Table.Attribute</i></u>", a.getHTMLValue());
     }
 
+    /**
+     * Testen, ob ein als Unique gekennzeichnetes Attribut richtig ausgegeben wird
+     */
+    @Test
+    public void testBaseAttributeWithUnique() {
+        BaseAttribute a = new Unique(new Attribute("Test"));
+        assertEquals("Test &lt;UNIQUE&gt;", a.getHTMLValue());
+    }
+
 }

@@ -23,11 +23,6 @@ public abstract class BaseAttribute {
         return value;
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-
     /**
      * Zusammenbauen des HTML-Strings:
      * Diese besteht aus den Anfang-Tags, dem Namen/Value des Datenbank-Attributes und den End-Tags
@@ -53,10 +48,6 @@ public abstract class BaseAttribute {
     }
 
     public boolean isForeignKey() {
-        return false;
-    }
-
-    public boolean isUnique() {
         return false;
     }
 

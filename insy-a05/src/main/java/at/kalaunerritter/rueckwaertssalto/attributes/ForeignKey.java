@@ -60,11 +60,6 @@ public class ForeignKey extends Modifier {
         return true;
     }
 
-    @Override
-    public boolean isUnique() {
-        return getWrapper().isUnique();
-    }
-
     public String getForeignTable() {
         return foreignTable;
     }

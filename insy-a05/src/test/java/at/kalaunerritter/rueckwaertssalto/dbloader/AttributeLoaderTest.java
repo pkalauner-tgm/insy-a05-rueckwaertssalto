@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 import java.util.Collection;
 
 import static org.junit.Assert.*;
@@ -34,7 +36,15 @@ public class AttributeLoaderTest {
         ResultSet pks = mock(ResultSet.class);
         ResultSet foreignKeys = mock(ResultSet.class);
         ResultSet uniques = mock(ResultSet.class);
+        ResultSet notnull = mock(ResultSet.class);
+        ResultSetMetaData rsmd = mock(ResultSetMetaData.class);
+        Statement st = mock(Statement.class);
 
+        when(st.executeQuery("SELECT * FROM Table")).thenReturn(notnull);
+        when(con.createStatement()).thenReturn(st);
+        when(rsmd.isNullable(1)).thenReturn(1);
+
+        when(notnull.getMetaData()).thenReturn(rsmd);
 
         //Connection mocken
         when(con.getCatalog()).thenReturn("Bla");

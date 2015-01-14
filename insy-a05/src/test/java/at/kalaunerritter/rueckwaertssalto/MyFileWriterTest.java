@@ -1,8 +1,6 @@
 package at.kalaunerritter.rueckwaertssalto;
 
-import at.kalaunerritter.rueckwaertssalto.attributes.Attribute;
-import at.kalaunerritter.rueckwaertssalto.attributes.ForeignKey;
-import at.kalaunerritter.rueckwaertssalto.attributes.PrimaryKey;
+import at.kalaunerritter.rueckwaertssalto.attributes.*;
 import at.kalaunerritter.rueckwaertssalto.dbloader.Table;
 import org.junit.After;
 import org.junit.Before;
@@ -203,8 +201,8 @@ public class MyFileWriterTest {
         assertEquals("node [shape=ellipse]; {node [label=<<u>attribute1</u>>] attribute10;};", br.readLine());
         assertEquals("node [shape=diamond]; \"table1-table2\";", br.readLine());
         assertEquals("attribute10 -- table2;", br.readLine());
-        assertEquals("\"table1-table2\" -- table1 [label=\"1\",len=1.00];", br.readLine());
-        assertEquals("table2 -- \"table1-table2\" [label=\"n\",len=1.00];", br.readLine());
+        assertEquals("table2 -- \"table1-table2\" [label=\"1\",len=1.00];", br.readLine());
+        assertEquals("\"table1-table2\" -- table1 [label=\"n\",len=1.00];", br.readLine());
         assertEquals("}", br.readLine());
     }
 
@@ -236,6 +234,30 @@ public class MyFileWriterTest {
         assertEquals("attribute22 -- table1;", br.readLine());
         assertEquals("}", br.readLine());
 
+    }
+
+    @Test
+    public void testERDUniqueAndNotNull() throws IOException {
+        List<Table> list = new ArrayList<>();
+        Table t = new Table("table1");
+        t.addAttribute(new PrimaryKey(new Attribute("pk")));
+        t.addAttribute(new Unique(new Attribute("uniqueAttribute")));
+        t.addAttribute(new NotNull(new Attribute("NotNullAttribute")));
+        list.add(t);
+
+        MyFileWriter fw = new MyFileWriter(list);
+        fw.writeERDToFile();
+
+        BufferedReader br = new BufferedReader(new FileReader(erdFile));
+
+        assertEquals("graph ERD {", br.readLine());
+        assertEquals("node [shape=box]; table1; ", br.readLine());
+        assertEquals("node [shape=ellipse]; {node [label=<<u>pk</u>>] pk0;};{node [label=<uniqueAttribute &lt;UNIQUE&gt;>] uniqueAttribute1;};{node [label=<NotNullAttribute &lt;NOT NULL&gt;>] NotNullAttribute2;};", br.readLine());
+        assertEquals("node [shape=diamond]; ", br.readLine());
+        assertEquals("pk0 -- table1;", br.readLine());
+        assertEquals("uniqueAttribute1 -- table1;", br.readLine());
+        assertEquals("NotNullAttribute2 -- table1;", br.readLine());
+        assertEquals("}", br.readLine());
     }
 
 }

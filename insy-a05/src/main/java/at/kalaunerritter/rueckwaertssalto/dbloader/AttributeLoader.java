@@ -62,16 +62,6 @@ public class AttributeLoader {
                 map.put(columnName, new PrimaryKey(attr));
             }
 
-            // gets all foreign keys of the table
-            ResultSet foreignKeys = dbmd.getImportedKeys(con.getCatalog(), null, tablename);
-            while (foreignKeys.next()) {
-                String fkColumnName = foreignKeys.getString("FKCOLUMN_NAME");
-                String pkTableName = foreignKeys.getString("PKTABLE_NAME");
-                String pkColumnName = foreignKeys.getString("PKCOLUMN_NAME");
-                // get the attribute out of the map, decorate it and put it back into the map
-                BaseAttribute attr = map.get(fkColumnName);
-                map.put(fkColumnName, new ForeignKey(pkTableName, pkColumnName, attr));
-            }
 
             // get unique attributes of the table
             ResultSet uniques = dbmd.getIndexInfo(con.getCatalog(), null, tablename, true, true);
@@ -99,6 +89,18 @@ public class AttributeLoader {
                     map.put(columnName, new NotNull(attr));
                 }
             }
+
+            // gets all foreign keys of the table
+            ResultSet foreignKeys = dbmd.getImportedKeys(con.getCatalog(), null, tablename);
+            while (foreignKeys.next()) {
+                String fkColumnName = foreignKeys.getString("FKCOLUMN_NAME");
+                String pkTableName = foreignKeys.getString("PKTABLE_NAME");
+                String pkColumnName = foreignKeys.getString("PKCOLUMN_NAME");
+                // get the attribute out of the map, decorate it and put it back into the map
+                BaseAttribute attr = map.get(fkColumnName);
+                map.put(fkColumnName, new ForeignKey(pkTableName, pkColumnName, attr));
+            }
+
 
             return map.values();
         } catch (SQLException e) {

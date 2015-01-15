@@ -13,6 +13,7 @@ public abstract class BaseAttribute {
 
     /**
      * Attribute werden standardmaessig auf leeren Text gesetzt
+     * @param value Wert des Attributs
      */
     public BaseAttribute(String value) {
         this.value = value;

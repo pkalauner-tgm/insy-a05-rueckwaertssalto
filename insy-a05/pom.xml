@@ -83,7 +83,6 @@
                 <includes>
                     <include>**/*.pdf</include>
                     <include>**/*.png</include>
-                    <include>**/*.html</include>
                 </includes>
             </resource>
         </resources>
@@ -127,6 +126,41 @@
                         </fileset>
                     </filesets>
                 </configuration>
+            </plugin>
+            <!-- generate test report -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.9</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report-only</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/testreport</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- generate css files for test report -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.4</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <configuration>
+                            <generateReports>false</generateReports>
+                            <outputDirectory>${basedir}/target/classes/testreport</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <!-- generate javadoc and get it ready for packaging -->
             <plugin>

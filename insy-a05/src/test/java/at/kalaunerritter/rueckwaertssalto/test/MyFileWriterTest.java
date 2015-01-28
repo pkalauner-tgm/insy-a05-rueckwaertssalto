@@ -1,5 +1,6 @@
-package at.kalaunerritter.rueckwaertssalto;
+package at.kalaunerritter.rueckwaertssalto.test;
 
+import at.kalaunerritter.rueckwaertssalto.MyFileWriter;
 import at.kalaunerritter.rueckwaertssalto.attributes.*;
 import at.kalaunerritter.rueckwaertssalto.dbloader.Table;
 import org.junit.After;

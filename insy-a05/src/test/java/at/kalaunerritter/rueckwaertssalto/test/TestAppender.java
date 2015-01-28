@@ -1,4 +1,4 @@
-package at.kalaunerritter.rueckwaertssalto;
+package at.kalaunerritter.rueckwaertssalto.test;
 
 
 import org.apache.log4j.AppenderSkeleton;

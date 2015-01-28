@@ -1,5 +1,7 @@
-package at.kalaunerritter.rueckwaertssalto;
+package at.kalaunerritter.rueckwaertssalto.test;
 
+import at.kalaunerritter.rueckwaertssalto.Main;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -18,7 +20,7 @@ public class MainTest {
     @Test
     public void testParseArgs1() {
         String[] args = { };
-        assertEquals(false, Main.parseArgs(args));
+        Assert.assertEquals(false, Main.parseArgs(args));
     }
 
     /**

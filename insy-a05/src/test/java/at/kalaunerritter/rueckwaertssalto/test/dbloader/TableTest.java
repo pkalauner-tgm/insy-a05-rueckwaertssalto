@@ -1,7 +1,8 @@
-package at.kalaunerritter.rueckwaertssalto.dbloader;
+package at.kalaunerritter.rueckwaertssalto.test.dbloader;
 
 import at.kalaunerritter.rueckwaertssalto.attributes.Attribute;
 import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
+import at.kalaunerritter.rueckwaertssalto.dbloader.Table;
 import org.junit.Test;
 
 import java.util.ArrayList;

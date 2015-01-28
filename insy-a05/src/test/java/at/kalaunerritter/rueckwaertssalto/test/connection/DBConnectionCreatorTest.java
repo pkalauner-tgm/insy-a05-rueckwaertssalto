@@ -1,4 +1,4 @@
-package at.kalaunerritter.rueckwaertssalto.connection;
+package at.kalaunerritter.rueckwaertssalto.test.connection;
 
 import at.kalaunerritter.rueckwaertssalto.Main;
 import org.junit.Test;

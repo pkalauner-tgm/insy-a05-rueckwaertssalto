@@ -1,5 +1,7 @@
-package at.kalaunerritter.rueckwaertssalto.dbloader;
+package at.kalaunerritter.rueckwaertssalto.test.dbloader;
 
+import at.kalaunerritter.rueckwaertssalto.dbloader.Table;
+import at.kalaunerritter.rueckwaertssalto.dbloader.TableCreator;
 import org.junit.Test;
 
 import java.sql.Connection;

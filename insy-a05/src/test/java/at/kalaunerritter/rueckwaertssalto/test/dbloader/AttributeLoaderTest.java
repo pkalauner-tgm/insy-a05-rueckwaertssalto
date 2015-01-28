@@ -1,6 +1,7 @@
-package at.kalaunerritter.rueckwaertssalto.dbloader;
+package at.kalaunerritter.rueckwaertssalto.test.dbloader;
 
 import at.kalaunerritter.rueckwaertssalto.attributes.BaseAttribute;
+import at.kalaunerritter.rueckwaertssalto.dbloader.AttributeLoader;
 import com.mysql.jdbc.DatabaseMetaData;
 import org.junit.Before;
 import org.junit.Test;

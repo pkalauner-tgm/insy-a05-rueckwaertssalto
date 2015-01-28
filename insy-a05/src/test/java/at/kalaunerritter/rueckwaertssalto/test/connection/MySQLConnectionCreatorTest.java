@@ -1,7 +1,7 @@
-package at.kalaunerritter.rueckwaertssalto.connection;
+package at.kalaunerritter.rueckwaertssalto.test.connection;
 
 
-import at.kalaunerritter.rueckwaertssalto.TestAppender;
+import at.kalaunerritter.rueckwaertssalto.test.TestAppender;
 import at.kalaunerritter.rueckwaertssalto.Main;
 import org.apache.log4j.Logger;
 import org.junit.Before;

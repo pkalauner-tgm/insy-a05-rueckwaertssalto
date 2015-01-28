@@ -1,5 +1,6 @@
-package at.kalaunerritter.rueckwaertssalto.attributes;
+package at.kalaunerritter.rueckwaertssalto.test.attributes;
 
+import at.kalaunerritter.rueckwaertssalto.attributes.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
